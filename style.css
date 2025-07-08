@@ -1,0 +1,949 @@
+/* ======================== */
+/* CSS ROOT VARIABLES      */
+/* ======================== */
+:root {
+  --bg-primary: #ffffff;
+  --bg-secondary: #F6F6F6;
+  --primary: #6C0007;
+  --secondary: #8F0009;
+  --text: #000000;
+  --text-secondary: #ffffff;
+  --hero-bg: url('Images/Hero.png');
+  --hero-overlay: rgba(0, 0, 0, 0.6);
+}
+
+.categorie-container {
+  padding-top: 1rem;
+  width: 70%;
+  margin: 0 auto;
+}
+
+/* ======================== */
+/* LAYOUT CONTAINER         */
+/* ======================== */
+.content-container,
+.container {
+  width: 70%;
+  margin: 0 auto;
+  padding: 0 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* ======================== */
+/* STATUS LEISTE            */
+/* ======================== */
+.status {
+  color: var(--text);
+  background-color: var(--bg-secondary);
+}
+
+.status-container {
+  display: flex;
+  justify-content: center;
+}
+
+#statusText.text-success,
+#statusText.text-danger {
+  color: var(--text);
+}
+
+.status-wrapper {
+  cursor: pointer;
+}
+
+.status-wrapper:hover .opening-hours {
+  display: block;
+}
+
+.opening-hours {
+  background-color: var(--bg-secondary);
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0.5rem 1rem;
+  white-space: nowrap;
+  display: none;
+  z-index: 1000;
+}
+
+.opening-hours-line {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 0.1rem 0;
+}
+
+/* ======================== */
+/* NAVIGATION               */
+/* ======================== */
+.nav-links {
+  margin-top: 4.5rem;
+}
+
+.nav-item.dropdown {
+  position: relative;
+}
+
+.dropdown-menu-custom {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: var(--bg-primary);
+  border-radius: 0.25rem;
+  box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+  padding: 0.5rem 0;
+  min-width: 220px;
+  z-index: 1000;
+}
+
+.nav-item.dropdown:hover .dropdown-menu-custom {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.dropdown-menu-custom .dropdown-item {
+  padding: 0.5rem 1rem;
+  display: block;
+  color: var(--text);
+  text-decoration: none;
+  font-size: 0.95rem;
+  white-space: nowrap;
+  transition: background-color 0.3s ease;
+}
+
+.dropdown-menu-custom .dropdown-item:hover {
+  background-color: var(--primary);
+  color: var(--text-secondary);
+}
+
+.nav-item.dropdown:hover > .nav-link {
+  color: var(--primary);
+}
+
+.nav-item.dropdown:hover > .nav-link::after {
+  transform: translateX(-50%) scaleX(1);
+}
+
+.nav-link.active {
+  color: var(--primary) !important; 
+}
+
+.nav-link.active::after {
+  transform: translateX(-50%) scaleX(1);
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* ======================== */
+/* HAMBURGER MENU           */
+/* ======================== */
+
+/* Standard Nav: ab 1080px sichtbar */
+.main-nav .nav-links {
+  display: flex;
+  align-items: center;
+}
+
+/* Hamburger-Icon: nur unter 1080px sichtbar */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 10px;
+}
+
+.hamburger span {
+  width: 70px;
+  height: 8px;
+  background-color: var(--primary);
+  border-radius: 2px;
+}
+
+/* Overlay-Menü versteckt */
+.overlay-menu {
+  position: fixed;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--bg-primary);
+  color: var(--text);
+  transition: top 0.4s ease;
+  z-index: 999;
+  padding-top: 4rem;
+}
+
+.overlay-menu.active {
+  top: 0;
+}
+
+.overlay-menu ul {
+  list-style: none;
+  padding-top: 10rem;
+  padding-left: 6rem;
+}
+
+.overlay-menu li {
+  margin: 1rem 0;
+}
+
+.overlay-menu a {
+  color: var(--text);
+  text-decoration: none;
+  font-size: 2.5rem;
+  display: block;
+}
+
+/* Submenu im Overlay */
+.overlay-menu .submenu {
+  display: none;
+  margin-top: 0.5rem;
+  padding-left: 1rem;
+}
+
+.overlay-menu .submenu li {
+  margin: 0.5rem 0;
+}
+
+/* Close Button */
+.close-overlay {
+  position: absolute;
+  top: 2%;
+  right: 10%;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: var(--primary);
+  color: white;
+  font-size: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  z-index: 2000;
+}
+
+.close-overlay:hover {
+  background-color: var(--secondary) !important;
+}
+
+.overlay-menu .submenu {
+  display: none;
+}
+
+.overlay-menu .submenu.active {
+  display: block;
+}
+
+.overlay-content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* Hauptmenü-Liste */
+.overlay-menu .mainmenu {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  transition: transform 0.4s ease;
+}
+
+/* Untermenü-Liste */
+.overlay-menu .submenu-page {
+  position: absolute;
+  top: 0;
+  left: 100%;
+  width: 100%;
+  transition: transform 0.4s ease;
+}
+
+/* Wenn Untermenü aktiv, verschiebt Hauptmenü nach links */
+.overlay-menu.submenu-open .mainmenu {
+  transform: translateX(-100%);
+}
+
+/* Untermenü kommt von rechts rein */
+.overlay-menu.submenu-open .submenu-page {
+  transform: translateX(-100%);
+}
+
+.subarrow-right {
+  margin-left: 65%;
+}
+
+.submenu-back {
+  color: var(--primary) !important;
+}
+
+/* Breakpoint: unter 1080px */
+@media (max-width: 1080px) {
+  .main-nav .nav-links {
+    display: none;
+  }
+  .hamburger {
+    display: flex;
+  }
+}
+
+/* ======================== */
+/* NAVIGATION DESKTOP RESET */
+/* ======================== */
+@media (min-width: 1080px) {
+  .main-nav ul.nav-links {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  .main-nav ul.nav-links li {
+    position: relative;
+  }
+
+  .main-nav ul.nav-links a {
+    position: relative;
+    text-decoration: none;
+    color: var(--text);
+    font-weight: 500;
+    font-size: 1.1rem;
+    padding: 0.5rem 0;
+    display: inline-block;
+    transition: color 0.3s ease;
+  }
+
+  .main-nav ul.nav-links a::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%) scaleX(0);
+    transform-origin: center;
+    width: 100%;
+    height: 2px;
+    background-color: var(--primary);
+    transition: transform 0.3s ease;
+  }
+
+  .main-nav ul.nav-links a:hover::after,
+  .main-nav ul.nav-links a.active::after {
+    transform: translateX(-50%) scaleX(1);
+  }
+
+  .main-nav ul.nav-links a:hover,
+  .main-nav ul.nav-links a.active {
+    color: var(--primary);
+  }
+
+  /* Submenu beim Hover anzeigen */
+  .main-nav ul.nav-links li.has-submenu:hover .submenu {
+    display: block;
+  }
+
+  .main-nav ul.nav-links .submenu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: var(--bg-primary);
+    border-radius: 0.25rem;
+    box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.6);
+    display: none;
+    padding: 0.5rem 0;
+    min-width: 220px;
+    z-index: 1000;
+  }
+
+  .main-nav ul.nav-links .submenu li {
+    margin: 0;
+  }
+
+  .main-nav ul.nav-links .submenu a {
+    padding: 0.5rem 1rem;
+    display: block;
+    font-size: 0.95rem;
+    white-space: nowrap;
+  }
+
+  .main-nav ul.nav-links .submenu a:hover {
+    background-color: var(--primary);
+    color: var(--text-secondary);
+  }
+}
+
+/* ======================== */
+/* HERO SECTION             */
+/* ======================== */
+.hero-section {
+  background: linear-gradient(var(--hero-overlay), var(--hero-overlay)), var(--hero-bg) center/cover no-repeat;
+  height: 35vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.hero-content .btn {
+  background-color: var(--primary);
+  border: none;
+  padding: 1rem 1.5rem;
+  border-radius: 2rem;
+}
+
+.hero-content .btn:hover {
+  background-color: var(--secondary);
+}
+
+.hero-heading {
+  color: white;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+}
+
+.hero-subtext {
+  color: white;
+  font-size: 1.25rem;
+  font-weight: 400;
+  margin-bottom: 2rem;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+/* ======================== */
+/* SERVICE-KARTEN           */
+/* ======================== */
+.service-buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  max-width: 1300px;
+  margin: 1rem auto;
+}
+
+.service-btn {
+  position: relative;
+  background-color: var(--primary);
+  color: white;
+  text-decoration: none;
+  border-radius: 10px;
+  padding: 2rem 1rem;
+  min-height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+
+.service-btn img {
+  width: 60px;
+  transition: opacity 0.5s ease;
+  opacity: 0.1; /* Idle leicht durchsichtig */
+  scale: 2;
+}
+
+.oelwechsel_icon {
+  transform: scale(1.7);
+}
+
+.autoglas_icon {
+  transform: scale(1.7);
+}
+
+.service-btn span {
+  position: absolute;
+  font-weight: 600;
+  font-size: 1.5rem;
+  text-align: center;
+  transition: opacity 0.3s ease;
+  opacity: 1;
+}
+
+.service-btn:hover img {
+  opacity: 1;
+  scale: 2;
+}
+.service-btn:hover span {
+  opacity: 0;
+}
+
+@media (max-width: 1393px) {
+  .oelwechsel_icon {
+    transform: scale(1.2);
+  }
+
+  .autoglas_icon {
+    transform: scale(1.2);
+  }
+}
+
+@media (max-width: 992px) {
+  .service-buttons {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .oelwechsel_icon {
+    transform: scale(1.7);
+  }
+
+  .autoglas_icon {
+    transform: scale(1.7);
+  }
+}
+
+@media (max-width: 576px) {
+  .service-buttons {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ======================== */
+/* BUTTON STYLES            */
+/* ======================== */
+.action_btn {
+  position: relative;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0);
+  padding-block: 0.5rem;
+  padding-inline: 1.25rem;
+  background-color: var(--primary);
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  color: #fff;
+  gap: 10px;
+  font-weight: bold;
+  border: 3px solid #ffffff4d;
+  outline: none;
+  overflow: hidden;
+  font-size: 19px;
+  text-decoration: none;
+}
+
+.action_btn:hover {
+  transform: scale(1.05);
+  border-color: #fff9;
+}
+
+.action_btn::before {
+  content: "";
+  position: absolute;
+  width: 100px;
+  height: 100%;
+  background-image: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0) 30%,
+    rgba(255, 255, 255, 0.8),
+    rgba(255, 255, 255, 0) 70%
+  );
+  top: 0;
+  left: -100px;
+  opacity: 0.6;
+}
+
+.action_btn:hover::before {
+  animation: shine 1.5s ease-out infinite;
+}
+
+@keyframes shine {
+  0% {
+    left: -100px;
+  }
+  60% {
+    left: 100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+.carousel-indicators {
+  position: static;
+  margin-top: 1rem;
+  justify-content: center;
+}
+
+.carousel-indicators [data-bs-target] {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: var(--primary);
+}
+
+.image-grid-item {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.image-grid-item:hover {
+  transform: scale(1.02) !important;
+  filter: brightness(85%) !important;
+}
+
+.service-section {
+  padding: 0rem 1rem;
+  max-width: 70%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.service-cards {
+  width: 75%;
+  margin: 0 auto;
+}
+
+.service-description {
+  font-size: 1rem;
+  max-width: 90%;
+  margin: 0 auto 2rem;
+  line-height: 1.5;
+}
+
+.benefit-box {
+  background-color: var(--primary);
+  color: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: left;
+  margin-top: 2rem;
+}
+
+.benefit-title {
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.benefit-list {
+  list-style: none;
+  padding: 0;
+}
+
+.benefit-list li {
+  margin-bottom: 0.5rem;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.benefit-list li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: white;
+}
+
+.service_oelwechsel{
+  height: 9rem;
+}
+
+.carousel-inner {
+  max-width: 70%;
+  max-height: 60vh;
+  margin: 0 auto;
+  display: block;
+  width: 100%;
+  object-fit: cover;
+  align-items: center;
+  justify-content: center;
+}
+
+.anfahrt-title {
+  font-family: monospace;
+  font-weight: bold;
+  color: var(--primary);
+  border-bottom: 2px solid var(--primary);
+  display: inline-block;
+  margin-bottom: 2rem;
+}
+
+.footer {
+  background-color: var(--primary);
+  color: white;
+  text-align: center;
+  padding: 2rem 1rem 1rem;
+  margin-top: 5rem;
+  position: relative;
+}
+
+/* Back-to-top Button */
+.back-to-top {
+  position: absolute;
+  top: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--primary);
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.back-to-top a {
+  color: white;
+  top: -90px;
+  font-size: 2rem;
+  text-decoration: none;
+}
+
+.footer-links {
+  margin-bottom: 0.5rem;
+}
+
+.footer-links a {
+  color: white;
+  margin: 0 1rem;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}
+
+.footer-copy {
+  font-size: 0.7rem;
+  opacity: 0.8;
+}
+
+.footer-credit {
+  font-size: 0.75rem;
+  opacity: 0.8;
+  margin-top: 0.5rem;
+  color: white;
+}
+
+/* Startzustand: unsichtbar und verschoben */
+.reveal {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s ease-out;
+  will-change: transform, opacity;
+}
+
+/* Sichtbar-Status */
+.reveal.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.contact-section {
+  max-width: 70%;
+  margin: 0 auto;
+}
+
+.contact-card {
+  background-color: var(--primary);
+  color: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 180px;  
+}
+
+.contact-icon {
+  font-size: 2.5rem;
+  padding: 1rem 0 0.5rem;
+}
+
+.contact-text {
+  background-color: #4a0005;
+  width: 100%;
+  padding: 0.75rem 0.5rem;
+  font-size: 0.95rem;
+  border-radius: 0.5rem;
+  line-height: 1.4;
+  flex-shrink: 0;      
+  height: 60px;        
+  display: flex;
+  align-items: center; 
+  justify-content: center; 
+  text-align: center;
+}
+
+.contact-text p {
+  margin: 0;
+}
+
+.contact-form-wrapper {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.contact-form {
+  background-color: #6C0007;
+  color: white;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.contact-form .form-label {
+  color: white;
+  font-weight: 500;
+}
+
+.contact-form .form-control {
+  background-color: #ffffff;
+  border: 1px solid #8f0009;
+  color: var(--text);
+}
+
+.contact-form .form-control::placeholder {
+  color: #ddd;
+}
+
+.contact-form .form-control:focus {
+  border-color: #fff;
+  box-shadow: none;
+}
+
+.contact-form .form-check-label {
+  font-size: 0.9rem;
+}
+
+.contact-form .btn-primary {
+  background-color: white;
+  color: var(--primary);
+  border: 3px solid #8f000a75;
+  font-weight: bold;
+  padding: 0.5rem 2rem;
+  border-radius: 999px;
+  transition: all 0.3s ease;
+}
+
+.contact-form .btn-primary:hover {
+  background-color: #f0f0f0;
+  border-color: var(--secondary);
+}
+
+.service_hero {
+  margin-bottom: 2rem;
+}
+
+.section-title {
+  font-family: monospace;
+  font-weight: bold;
+  color: var(--primary);
+  border-bottom: 2px solid var(--primary);
+  display: inline-block;
+  margin-bottom: 2rem;
+}
+
+.card-box {
+  padding: 1rem;
+}
+
+.card {
+  background-color: #ebebeb;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+}
+
+.card-inner {
+  background: #fff;
+  border-radius: 0.5rem;
+  padding: 2rem 1rem;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card-inner:hover {
+  transform: translateY(-5px);
+}
+
+.card-icon {
+  font-size: 2.5rem;
+  color: #6C0007;
+  margin-bottom: 1rem;
+}
+
+.card-title {
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-bottom: 0.75rem;
+  max-width: 100%;
+  word-wrap: break-word;
+  hyphens: auto;
+  text-align: center;
+}
+
+.card-text {
+  font-size: 0.95rem;
+  color: #333;
+  flex: 1;
+}
+
+.inspection-cards {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.map-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.map-placeholder {
+  background-color: var(--bg-secondary);
+  border: 1px solid #ddd;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  color: var(--text);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+#map-container iframe {
+  width: 100%;
+  height: 450px;
+  border: none;
+  border-radius: 0.5rem;
+}
+
+.custom-red-btn {
+  background-color: #6C0007; /* Dein Rot */
+  color: white;
+  border: none;
+  padding: 0.75rem 2rem;
+  font-size: 1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* sanfter Übergang beim Hover */
+}
+
+.custom-red-btn:hover {
+  background-color: #8F0009; /* etwas heller beim Hover */
+}
