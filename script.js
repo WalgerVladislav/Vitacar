@@ -92,9 +92,10 @@ document.addEventListener("DOMContentLoaded", function () {
       if (placeholder && container) {
         placeholder.classList.add("d-none");
         // WICHTIG: Ersetze den Platzhalter durch deinen echten Google Maps Einbettungs-Code
-        container.innerHTML = `<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2315.0804313120843!2d9.57420187733106!3d54.53207717265693!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47b30cd0af2e6c55%3A0xd1ef23254c3f76f2!2sHans-J%C3%BCrgen-Klinker-Stra%C3%9Fe%203%2C%2024837%20Schleswig!5e0!3m2!1sde!2sde!4v1751969137440!5m2!1sde!2sde" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`;
+        container.innerHTML = `<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1214.1676512476022!2d9.576906759980723!3d54.532473872715755!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47b30d11d2433fc5%3A0x21f0783df513f311!2sVITACAR!5e1!3m2!1sde!2sde!4v1752246714710!5m2!1sde!2sde" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`;
         container.classList.remove("d-none");
       }
+      
     });
   }
   

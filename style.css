@@ -8,8 +8,8 @@
   --secondary: #8F0009;
   --text: #000000;
   --text-secondary: #ffffff;
-  --hero-bg: url('Images/Hero.png');
-  --hero-overlay: rgba(0, 0, 0, 0.6);
+  --hero-bg: url('Images/Motor_Hero_001.jpg');
+  --hero-overlay: rgba(0, 0, 0, 0.4);
 }
 
 .categorie-container {
@@ -387,7 +387,7 @@ ul {
 /* ======================== */
 .hero-section {
   background: linear-gradient(var(--hero-overlay), var(--hero-overlay)), var(--hero-bg) center/cover no-repeat;
-  height: 35vh;
+  height: 40vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -598,6 +598,15 @@ ul {
   transition: transform 0.3s ease, filter 0.3s ease;
 }
 
+.map-image-container img {
+  max-width: 40%;
+
+  height: auto;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+
 .image-grid-item:hover {
   transform: scale(1.02) !important;
   filter: brightness(85%) !important;
@@ -662,20 +671,24 @@ ul {
 
 .carousel-inner {
   max-width: 70%;
-  max-height: 60vh;
+  max-height: 70vh;
   margin: 0 auto;
   display: block;
   width: 100%;
   object-fit: cover;
   align-items: center;
   justify-content: center;
+  border-radius: 1rem;
+}
+
+.carousel-item {
+  object-position: 50% 50%;
 }
 
 .anfahrt-title {
   font-family: monospace;
   font-weight: bold;
   color: var(--primary);
-  border-bottom: 2px solid var(--primary);
   display: inline-block;
   margin-bottom: 2rem;
 }
