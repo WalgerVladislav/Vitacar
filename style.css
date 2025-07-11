@@ -606,6 +606,10 @@ ul {
   box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  filter: invert(1) grayscale(100);
+}
 
 .image-grid-item:hover {
   transform: scale(1.02) !important;
